@@ -24,7 +24,7 @@ SECRET_KEY = get_env_variable(
     "django-insecure-0im_p_hnq4@0nm+ck2l_&@)7lr0$b08&$dx35*4$xh4-x27(-*",
 )
 DEBUG = get_env_variable("DJANGO_DEBUG", "False") != "False"
-ALLOWED_HOSTS = ["your-app-name.herokuapp.com", "localhost", "127.0.0.1"]
+ALLOWED_HOSTS = ["*"]
 
 # Application definition
 INSTALLED_APPS = [
