@@ -9,8 +9,17 @@ https://docs.djangoproject.com/en/3.2/howto/deployment/wsgi/
 
 import os
 
+import django
+from django.core.management import call_command
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'mycalendar.settings')
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "mycalendar.settings")
+django.setup()
+
+# Exécuter les migrations
+call_command("migrate")
+
+
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "mycalendar.settings")
 
 application = get_wsgi_application()

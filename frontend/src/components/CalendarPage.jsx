@@ -10,6 +10,7 @@ function CalendarPage() {
   const [events, setEvents] = useState([]);
 
   useEffect(() => {
+    console.log("test");
     axios
       .get("/api/events/")
       .then((response) => {

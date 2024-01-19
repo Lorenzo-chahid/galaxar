@@ -8,7 +8,7 @@ router = DefaultRouter()
 router.register(r"events", EventViewSet)
 
 urlpatterns = [
-    path("api/", include(router.urls)),
     path("admin/", admin.site.urls),
+    path("api/", include(router.urls)),
     re_path(r"^.*", TemplateView.as_view(template_name="index.html")),
 ]

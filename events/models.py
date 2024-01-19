@@ -1,5 +1,20 @@
 from django.db import models
 from django.core.exceptions import ValidationError
+from django.contrib.auth.models import User
+from django.db.models.signals import post_migrate
+from django.dispatch import receiver
+
+
+def create_superuser():
+    """Crée un superutilisateur si aucun superutilisateur n'existe."""
+    if not User.objects.filter(is_superuser=True).exists():
+        User.objects.create_superuser("admin", "admin@example.com", "password1991")
+
+
+@receiver(post_migrate)
+def add_superuser(sender, **kwargs):
+    """Crée un superutilisateur après la migration."""
+    create_superuser()
 
 
 # Create your models here.
