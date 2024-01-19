@@ -1,6 +1,9 @@
 import os
 from pathlib import Path
 from django.core.exceptions import ImproperlyConfigured
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Chemin de base de votre projet Django
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -19,12 +22,20 @@ def get_env_variable(var_name, default=None):
 
 
 # Sécurité
-SECRET_KEY = get_env_variable(
-    "DJANGO_SECRET_KEY",
-    "django-insecure-0im_p_hnq4@0nm+ck2l_&@)7lr0$b08&$dx35*4$xh4-x27(-*",
-)
+SECRET_KEY = os.getenv("DJANGO_SECRET_KEY")
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": os.getenv("POSTGRES_DB"),
+        "USER": os.getenv("POSTGRES_USER"),
+        "PASSWORD": os.getenv("POSTGRES_PASSWORD"),
+        "HOST": os.getenv("POSTGRES_HOST"),
+        "PORT": os.getenv("POSTGRES_PORT", "5432"),
+    }
+}
+
 DEBUG = get_env_variable("DJANGO_DEBUG", "False") != "False"
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ["*", "https://galaxar.onrender.com"]
 
 # Application definition
 INSTALLED_APPS = [
@@ -73,12 +84,8 @@ WSGI_APPLICATION = "mycalendar.wsgi.application"
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
-    }
-}
+
+
 # Remplacez ce qui précède par la configuration de votre base de données pour la production
 
 # Password validation
