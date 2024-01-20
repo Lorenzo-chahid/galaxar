@@ -17,7 +17,6 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "mycalendar.settings")
 django.setup()
 
 # Exécuter les migrations
-call_command("collecstatic")
 call_command("migrate")
 
 
