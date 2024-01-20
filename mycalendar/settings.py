@@ -35,7 +35,7 @@ DATABASES = {
 }
 
 DEBUG = get_env_variable("DJANGO_DEBUG", "False") != "False"
-ALLOWED_HOSTS = ["galaxar.onrender.com", "*"]
+ALLOWED_HOSTS = ["localhost"]
 
 # Application definition
 INSTALLED_APPS = [
