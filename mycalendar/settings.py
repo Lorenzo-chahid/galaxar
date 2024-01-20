@@ -34,8 +34,8 @@ DATABASES = {
     }
 }
 
-DEBUG = get_env_variable("DJANGO_DEBUG", "False") != "False"
-ALLOWED_HOSTS = ["localhost"]
+DEBUG = True
+ALLOWED_HOSTS = ["*"]
 
 # Application definition
 INSTALLED_APPS = [
