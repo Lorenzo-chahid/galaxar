@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Calendar, momentLocalizer } from "react-big-calendar";
 import moment from "moment";
-import NavBar from "./NavBar";
+import NavBar from "../Navbar/NavBar";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 
 const localizer = momentLocalizer(moment);
@@ -29,7 +29,6 @@ function CalendarPage() {
   console.log("EVENT 2 :: ", events);
   return (
     <div>
-      <NavBar />
       <h2>Mon Calendrier</h2>
       <Calendar
         localizer={localizer}

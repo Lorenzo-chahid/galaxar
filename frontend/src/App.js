@@ -1,19 +1,21 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import CalendarPage from "./components/CalendarPage";
-import GalaxyPage from "./components/GalaxyPage"; // Assurez-vous que ce composant existe
+import MainContainer from "./containers/MainContainer";
+import HomePage from "./components/Home/Home";
+import CalendarPage from "./components/CalendarPage/CalendarPage";
+import GalaxyPage from "./components/GalaxyPage/GalaxyPage";
 
 function App() {
   return (
     <Router>
-      <div className="App">
-        {/* Inclure NavBar ici si elle doit être présente sur toutes les pages */}
-        <Routes>
-          <Route path="/" element={<CalendarPage />} />
-          <Route path="/galaxy" element={<GalaxyPage />} />
-          {/* Vous pouvez ajouter plus de routes ici */}
-        </Routes>
-      </div>
+      <Routes>
+        <Route path="/" element={<MainContainer />}>
+          <Route index element={<HomePage />} />
+          <Route path="calendar" element={<CalendarPage />} />
+          <Route path="galaxy" element={<GalaxyPage />} />
+          {/* More routes can be added here */}
+        </Route>
+      </Routes>
     </Router>
   );
 }
