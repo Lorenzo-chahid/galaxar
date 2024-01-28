@@ -13,4 +13,4 @@ class EventViewSet(viewsets.ModelViewSet):
 # Create your views here.
 def home(request):
     print("DEFLAGRATION")
-    return HttpResponse("My calendar")
+    return render(request, "resume.html" )
